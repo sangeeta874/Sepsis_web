@@ -1,0 +1,203 @@
+body {
+  background-image: linear-gradient(#417EB0, #5354A0);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+.headerSepsis{
+    font-size: 60p  x;
+    display:flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    color: white;
+}
+
+.logo{
+  display: flex;
+  margin-left: 0px;
+}
+
+.footer{
+
+  width:100%;
+  background-color: rgb(66, 66, 66);
+  color: white;
+  padding: 20px;
+  padding-right: 0px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+
+}
+
+
+.imgPrevention{
+  margin-left: 30px;
+}
+.imgcure{
+  margin:auto;
+}
+  
+  .cardPrevention:hover, .cardSofa:hover, .cardCure:hover, .cardSirs:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .containerPrevention, .containerSofa, .containerCure, .containerSirs {
+    margin-top: 10px;
+    padding: 2px 16px;
+  }
+
+  
+  
+  /* Float four columns side by side */
+.column {
+  width: 20%;
+  padding: 0 10px;
+  margin-left: -100px;
+
+}
+#Prescription{
+  margin-left: 60px;
+}
+
+.imgPrevention{
+  margin:auto;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row 
+{
+  margin: 0 -5px; 
+  margin-top: 50px;
+  align-items:center;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 100px;
+}
+
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 20px;
+  align-items: center;
+  text-align: center;
+  transition:0.3s;
+}
+
+.card a {
+  margin-top:15px;
+  text-align: center;
+  color : black;  
+  text-decoration: none;
+}
+
+.card:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+  .navbar {
+    background-color: white;
+    display: flex;
+   
+    
+  }
+
+  .containerNav{
+    display: flex;
+    position: fixed;
+    top: 0;
+    right : 0;
+  }
+  
+  .navbar a {
+    float: right;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .dropdown {
+    float: right;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: black;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color:  rgb(68, 159, 233);
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+    display:block;
+    
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display:block;
+  }
+
+  .languageSelect{
+    display: flex;
+   background-color: white;
+   box-shadow:  0 3px 8px 0 #b8b8b8;
+   padding: 10px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .navbar{
+      width: 100%;
+      display: flex;
+      position: fixed;
+      margin-top: 0px;
+      z-index: 100;
+    }
+}

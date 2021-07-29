@@ -1,0 +1,114 @@
+{% load static %}
+{% load i18n %}
+{% if msg %}
+
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>{% trans "Slay-Sepsis" %}</title>
+
+  <!--BOOTSTRAP CSS**********************************************-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+
+  <!--CUSTOM CSS**********************************************-->
+  <link rel="stylesheet" href="{% static '/css/index.css' %}" />
+
+  <!--FAVICON**********************************************-->
+  <link rel="icon" href="{% static '/img/favicon.ico' %}" />
+
+  <!-- font awesome********************************************** -->
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="{% static '/css/all.css' %}" />
+  <!--END OF HEAD**************************************************************************************-->
+</head>
+
+<body>
+  <!--BODY-->
+
+  <div class="navbar">
+    <div class="logo">
+      <h3>SEPSIS</h3>
+    </div>
+    <div class="containerNav">
+      <a href="/">Home</a>
+      <div class="dropdown">
+        <button class="dropbtn">Staff
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="staff/sign">Login</a>
+          <a href="staff/signup">Register</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Patient
+          <i  class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content dropdown-content-p">
+          <a href="patient/sign">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--~~~~~~~~~~~NAVIGATION BAR ENDS~~~~~~~~~~-->
+  <!--BANNER , BRUCE BANNER-->
+
+
+  <section class="section-bg">
+    <form action="{% url 'set_language'%}" method="POST">{% csrf_token%}
+      <input type="hidden" name="next" value="{{redirect_to}}">
+      <select name="language" id="">
+        {% get_available_languages as LANGUAGES%}
+        {% get_language_info_list for LANGUAGES as languages%}
+        {% for language in languages%}
+        <option value="{{language.code}}" {% if language.code == LC %} selected {% endif %}>
+          {{language.name_local}}
+        </option>
+        {% endfor %}
+
+      </select>
+      <input type="submit" value="go">
+    </form>
+
+    <div class="headerSepsis ">
+      <h2>{% trans "SEPSIS" %}</h2>
+    </div>
+    <div class="containerPara">
+        <p>Sepsis is the body’s overwhelming and life-threatening response to infection that can lead to tissue damage, organ failure, and death. In other words, it’s your body’s overactive and toxic response to an infection.</p>
+    </div>
+    <div class="containerButton">
+        <div class="d-flex justify-content-center col-sm-12 "> <button type="submit"
+            class="btn border-dark mr-3 px-4 btn-primary btn-lg  buttonLogin" id="submit-btn" onclick="location.href='{%url 'signIn'%}'">
+            {% trans "Login" %}
+        </button>
+        </div>
+        <div class="d-flex justify-content-center col-sm-12"> <button type="submit"
+            class="btn border-dark mr-3 px-4 btn-primary btn-lg  buttonSignup" id="submit-btn" onclick="location.href='{%url 'signup'%}'">
+            {% trans "Signup" %}
+        </button>
+        </div>
+    </div>
+    
+  </section>
+  <!--END OF BANNER-->
+
+  <div class="footer">
+    <p>© Copyright 2020 SourceDecode SIH</p>
+  </div>
+
+</body>
+
+</html>

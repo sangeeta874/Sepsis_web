@@ -1,0 +1,166 @@
+{% load static %}
+{% load i18n %}
+{% if msg %}
+<script>
+    alert('{{msg}}')
+</script>
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% trans "Slay-Sepsis" %}</title>
+
+    <!--BOOTSTRAP CSS**********************************************-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    
+    <!--UI-->
+<link rel="stylesheet" href="{% static '/css/motion-ui.min.css' %}">
+
+    <!--CUSTOM CSS**********************************************-->
+    <link rel="stylesheet" href="{% static '/css/index.css' %}" />
+
+    <!--FAVICON**********************************************-->
+    <link rel="icon" href="{% static '/img/favicon.ico' %}" />
+
+    <!-- font awesome********************************************** -->
+    <link rel="stylesheet" href="{% static '/css/all.css' %}" />
+    <!--END OF HEAD**************************************************************************************-->
+  </head>
+
+  <body>
+    <!--BODY-->
+    <!--NAVIGATION BAR-->
+    <nav class="navbar slide-in-left navbar-expand-sm navbar-dark bg-dark py-3" id="NAVBAR">
+      <a href="#" class="navbar-brand">
+        <img src="{% static '/img/favicon512.png' %}" alt="" width="48" ; />&nbsp;
+        {% trans "SLAY-SEPSIS" %}</a
+      >
+      <button
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navbarMenu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse nav-right" id="navbarMenu">
+        <ul class="navbar-nav ml-auto ">
+          <li class="nav-item mx-3 ">
+            <div class="dropdown color_">
+                <a class="btn text-secondary font-weight-bolder color_" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <p class="font-weight-bolder color_">{% trans "Doctor" %}</p>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button type="button" onclick="location.href='{% url 'signIn' %}'" class="dropdown-item">{% trans "Login" %}</button>
+                <div class="dropdown-divider"></div>
+                <button type="button" onclick="location.href='{% url 'signup' %}'" class="dropdown-item" >{% trans "Registration" %}</button>
+                </div>
+              </div>
+        </li>
+        <li class="nav-item" id="sep"> <a href="#" class="nav-link">|</a></li>
+        <li class="nav-item mx-3 ">
+            <div class="dropdown color_">
+                <a class="btn color_ text-secondary font-weight-bolder color_" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <p class="font-weight-bolder color_">{% trans "Patient" %}</p>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button type="button" onclick="location.href='{% url 'patsignIn' %}'" class="dropdown-item" >{% trans "Login" %}</button>
+                <div class="dropdown-divider"></div>
+                <button type="button" onclick="location.href='{% url 'patsignup' %}'" class="dropdown-item" >{% trans "Registration" %}</button>
+                </div>
+              </div>
+        </li>
+        </ul>
+      </div>
+    </nav>
+    <nav aria-label="breadcrumb" class="mb-0">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item active" aria-current="page">{% trans "Home" %} </li>
+      </ol>
+    </nav>
+    <form action="{% url 'set_language'%}"  method="POST">{% csrf_token%} 
+      <input type="hidden" name="next" value="{{redirect_to}}">
+      <select name="language" id="">
+          {% get_available_languages as LANGUAGES%}
+          {% get_language_info_list for LANGUAGES as languages%}
+          {% for language in languages%}
+              <option value="{{language.code}}" {% if language.code == LC %} selected {% endif %}>
+                  {{language.name_local}} 
+              </option>
+          {% endfor %}
+  
+      </select>
+      <input type="submit" value="go">
+  </form>
+    <!--~~~~~~~~~~~NAVIGATION BAR ENDS~~~~~~~~~~-->
+    <!--BANNER , BRUCE BANNER-->
+
+    <!--<div class="container-fluid">
+  <div class="max-height justify-content-center align-items-center">
+    <div class="col-12  mx-auto banner text-center">
+      <h1 class="text-capitalize">
+        <strong class="banner-title">Slay</strong>Sepsis
+      </h1>
+      <a href="#" Class="btn banner-link text-uppercase  col-3">PREVENTIONS</a>
+      <a href="#" class="btn banner-link text-uppercase  col-2">CURE</a>
+      <a href="#" class="btn banner-link text-uppercase  col-2">SIRS</a>
+      <a href="#" class="btn banner-link text-uppercase  col-3">SOFA</a>
+      </div>
+    </div>
+  </div>
+-->
+<section>
+    <div class="conatiner-fluid max-height mt-0">
+      <div class="row mx-auto col-sm-12 ">
+        <div class="title_ text-center justify-content-around  col-12  my-5">
+          <h1 class="text-capitalize slide-in-left  display-4 p-2 title  ">
+            <strong class=" px-3 py-1 ">{% trans "Slay Sepsis" %} </strong> 
+          </h1>
+          <div class="bg-purp under mx-auto mt-4"></div>
+        </div>
+        <!--END OF BANNER TITLE-->
+        <div class="banner-link mt-5 mb-0">
+            <div class="text-center justify-content-center my-4 justify-content-around align-items-center col-12 mx-auto">
+        <a href="prevention" class="text-purp btn bg-grn mx-2 px-3 py-2 my-3 ban-btn col-lg-3 col-md-6">{% trans "PREVENTIONS" %}</a>
+        <a href="#" class="text-purp btn bg-grn mx-2 px-2 py-2 my-3 ban-btn col-lg-2 col-md-6">{% trans "CURE" %}</a>
+        <a href="sirs" class="text-purp btn bg-grn mx-2 px-2 py-2 my-3 ban-btn col-lg-2 col-md-6">{% trans "SIRS" %}</a>
+        <a href="#" class="text-purp btn bg-grn mx-2 px-2 py-2 my-3 ban-btn col-lg-3 col-md-6">{% trans "SOFA" %}</a>
+        
+        </div>
+    </div>
+      </div>
+    </div>
+</section>
+    <!--END OF BANNER-->
+
+    <!--~~~~~~~~~~~~~~~FOOTER-HERE~~~~~~~~~~~~-->
+    <footer class="footer text-center bg-dark text-light p-4">
+      <p>@CopyRight 2020 SIH SourceDeCode</p>
+    </footer>
+    <!--****************DON'T TOUCH THIS***************************************-->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="{% static '/js/registration.js' %}"></script>
+  </body>
+</html>
